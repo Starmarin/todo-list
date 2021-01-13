@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>To do list</title>
+</head>
+
+<body>
+    <h1 class="app-title">to do list</h1>
+    <div class="container">
+        <div class="wrapper">
+            <input v-model="todo" type="text" name="task-to-do" id="task-to-do" class="task-to-do"
+                placeholder="What do you need to do?">
+            <button @click="addTodo" class="task-to-add-btn">add to list</button>
+        </div>
+        <div class="list-to-do wrapper">
+
+            <ul class="list" v-for="item in todos">
+                <li class="list-element">
+                    <i @click="makeDone(item)" :class="[item.isDone ?  'fas fa-check-circle'
+                        : 'far fa-circle checkbox-circle-icon']"></i>
+                    <span :class="{'task-done': item.isDone}">{{item.text}}</span>
+                    <i @click="clear(item)" class="fas fa-ban cancel-circle-icon"></i>
+                </li>
+            </ul>
+            <div class="app-instructions">
+                <p class="instruction">click <i class="far fa-circle"></i> to mark as completed</p>
+                <p class="instruction">click <i class="fas fa-ban"></i> to remove element</p>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="./app.js"></script>
+    <script src="https://kit.fontawesome.com/ec09212c33.js" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
